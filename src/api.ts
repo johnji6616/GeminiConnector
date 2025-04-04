@@ -27,13 +27,6 @@ function extractSQL(response: string): string | null {
     .filter(line => line.trim().length > 0);
   
   const cleanedResponse = lines.join('\n').trim();
-  
-  // Basic SQL validation
-  const sqlKeywords = {
-    required: ['SELECT', 'FROM'],
-    optional: ['WHERE', 'JOIN', 'GROUP BY', 'ORDER BY', 'HAVING', 'INSERT', 'UPDATE', 'DELETE', 'UNION', 'INTERSECT', 'EXCEPT'],
-    clauses: ['AND', 'OR', 'IN', 'NOT', 'LIKE', 'IS', 'NULL', 'ASC', 'DESC', 'LIMIT', 'OFFSET']
-  };
 
   const upperResponse = cleanedResponse.toUpperCase();
 
@@ -55,14 +48,19 @@ function extractSQL(response: string): string | null {
 interface QueryRequest {
   question: string;
   context?: string;
+  format: 'raw' | 'interpreted';
 }
 
 // Endpoint to query the database using natural language
 app.post('/api/query', async (req: Request<{}, {}, QueryRequest>, res: Response) => {
-  const { question, context } = req.body;
+  const { question, context, format } = req.body;
 
   if (!question) {
     return res.status(400).json({ error: 'Question is required' });
+  }
+
+  if (!format || !['raw', 'interpreted'].includes(format)) {
+    return res.status(400).json({ error: 'Format must be either "raw" or "interpreted"' });
   }
 
   try {
@@ -86,7 +84,7 @@ app.post('/api/query', async (req: Request<{}, {}, QueryRequest>, res: Response)
 
     const request: QARequest = {
       context: combinedContext,
-      question: question + ". for you output, just return the runnalbe sql query nothing else",
+      question: question + ". Only search for results within the last 24 hours. for you output, just return the runnalbe sql query nothing else",
     };
 
     // Get answer from Gemini
@@ -99,36 +97,44 @@ app.post('/api/query', async (req: Request<{}, {}, QueryRequest>, res: Response)
       // Execute the generated SQL query
       const results = await db.query(sqlQuery);
 
-      // Create a new request to Gemini to interpret the results
-      const interpretationRequest: QARequest = {
-        context: `
-          Database Schema:
-          ${schemaContent}
-          
-          API Context Information:
-          ${contextContent}
-          
-          The user asked: "${question}"
-          The query returned the following results: ${JSON.stringify(results)}
-          
-          Please provide a clear, human-readable interpretation of these results, taking into account the database schema and API context provided above.
-        `,
-        question: "Please interpret these database results in a clear, human-readable format."
-      };
+      if (format === 'raw') {
+        // Return raw results
+        res.json({
+          question,
+          answer:results
+        });
+      } else {
+        // Create a new request to Gemini to interpret the results
+        const interpretationRequest: QARequest = {
+          context: `
+            Database Schema:
+            ${schemaContent}
+            
+            API Context Information:
+            ${contextContent}
+            
+            The user asked: "${question}"
+            The query returned the following results: ${JSON.stringify(results)}
+            
+            Please provide a clear, human-readable interpretation of these results, taking into account the database schema and API context provided above. and mask any credentials.
+          `,
+          question: "Please interpret these database results in a clear, human-readable format."
+        };
 
-      // Get human-readable interpretation from Gemini
-      const interpretation = await documentQA.getAnswer(interpretationRequest);
+        // Get human-readable interpretation from Gemini
+        const interpretation = await documentQA.getAnswer(interpretationRequest);
 
-      // Return everything
-      res.json({
-        question,
-        answer: interpretation
-      });
+        // Return interpreted results
+        res.json({
+          question,
+          answer: interpretation
+        });
+      }
     } else {
       // If no SQL found, return the Gemini answer directly
       res.json({
         question,
-        answer: answer
+        answer: "Sorry, I couldn't find a valid SQL query to answer your question. Please try again with a different question."
       });
     }
 
