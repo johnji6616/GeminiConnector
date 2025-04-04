@@ -1,0 +1,22 @@
+URI is the list of APIs that are called to perform a function. The function performed is added in the context above
+UserId is the user ID
+Body field has the request body sent to the URI. It is a json blob.
+In the body json blob, we can identify subscriber, account or user by target type, target type for subscriber is 1, account is 2 and user is 3
+In the body if target type is 1 and then target id is subscriber id
+In the body if target type is 2 and then target id is account id
+In the body if target type is 3 and then target id is user id
+In the user table we have mapping of user ID to email and name of the user
+Name in the request body for /admin/role is the name of the role updated
+Permissions in the request body for /admin/role are the permissions updated
+Simtype is the swap sim is the type of sim. Simtype 10 is eSIM and simtype 20 is pSIM 
+All api method are post method
+
+here are the uri mapping:
+/v3order/deactivatesubscriber	To deactivate subscriber
+/v3order/swapSim	Change sim for a subscriber
+/v3order/changemsisdn	Change MSISDN or phone number for a subscriber
+/admin/role	Update permissions for a role
+/v3usermanager/getsubscriber this is used for searching a subscriber
+/v3refundwrite/refundtransaction - this is used to provide a refund to an account 
+/v3refundwrite/refundtransactionnextgen  - this is used to provide a refund to an account based on billing next gen 
+/v3billingstatement/downloadinvoice - this is used to download invoice 

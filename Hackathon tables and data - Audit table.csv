@@ -1,0 +1,81 @@
+timestamp: int(11) NOT NULL,absoluteTimestamp: int(11) NOT NULL,userInfo: varchar(256) DEFAULT NULL,requestInfo: text NOT NULL,controller: varchar(256) DEFAULT NULL,action: varchar(256) DEFAULT NULL,userId: int(11) DEFAULT NULL,error: tinyint(1) NOT NULL DEFAULT '0',clientIp: varchar(15) DEFAULT NULL,method: varchar(6) DEFAULT NULL,uri: varchar(1024) DEFAULT NULL,body: text
+1742629939,1742629939,NULL,test,test,test,1,0,0,,/v3order/deactivatesubscriber,"{""target_id"": ""4870aa39b1484c3ebfa915dff4cfdcaf"", ""target_type"": 1},"
+1742648913,1742648913,NULL,test,test,test,2,0,0,,/v3order/deactivatesubscriber,"{""target_id"": ""29956c58da9a4513ba59e0d00303a1dd"", ""target_type"": 1},"
+1742674699,1742674699,NULL,test,test,test,3,0,0,,/v3order/deactivatesubscriber,"{""target_id"": ""37232e8dd6df43d5b49bcb40fbe85824"", ""target_type"": 1},"
+1742728044,1742728044,NULL,test,test,test,4,0,0,,v3order/canceldeactivatesubscriber,"{""target_id"": ""37232e8dd6df43d5b49bcb40fbe85824"", ""target_type"": 1},"
+1742762228,1742762228,NULL,test,test,test,5,0,0,,v3order/canceldeactivatesubscriber,"{""target_id"": ""29956c58da9a4513ba59e0d00303a1dd"", ""target_type"": 1},"
+1742764146,1742764146,NULL,test,test,test,6,0,0,,v3order/canceldeactivatesubscriber,"{""target_id"": ""4870aa39b1484c3ebfa915dff4cfdcaf"", ""target_type"": 1},"
+1742808703,1742808703,NULL,test,test,test,7,0,0,,/v3order/swapSim,"{""sim_type_new"":10,""target_id"":""b3fa6665955f4bdd8413b98a4c307c73"",""offer_id"":""a50bd386be5d4fbbba41a46e8a74b9da"",""target_type"":1}"
+1742871988,1742871988,NULL,test,test,test,8,0,0,,/v3order/swapSim,"{""offer_id"":""a50bd386be5d4fbbba41a46e8a74b9da"",""target_type"":1,""sim_type_new"":10,""target_id"":""b3fa6665955f4bdd8413b98a4c307c73""}"
+1742905603,1742905603,NULL,test,test,test,9,0,0,,/v3order/changemsisdn,"{
+    ""target_id"": ""cb95f2eeb4304d93861e04c9327a0d6b"",
+    ""target_type"": 1,
+    ""msisdn"": ""4795170139"",
+    ""iccid"": ""8901260853151116729"",
+    ""additional_params"": { ""market_zip"": ""95054"" }
+  }"
+1742916014,1742916014,NULL,test,test,test,10,0,0,,/v3order/changemsisdn,"{
+    ""target_id"": ""03f00fb6aa604318979ae7d22e5388e2"",
+    ""target_type"": 1,
+    ""msisdn"": ""4940467143"",
+    ""iccid"": ""8901260853151113772"",
+    ""additional_params"": { ""market_zip"": ""95054"" }
+  }"
+1742968694,1742968694,NULL,test,test,test,1,0,0,,/v3order/swapSim,"{
+  ""target_type"": 1,
+  ""target_id"": ""b3fa6665955f4bdd8413b98a4c307c73_jkl"",
+  ""sim_type_new"": 20,
+  ""iccid_new"": ""12312321313123123213_789"",
+  ""offer_id"": ""f26b7762513a45148992dfae5db9cb13_mno""
+}"
+1743044238,1743044238,NULL,test,test,test,2,0,0,,/v3order/changemsisdn,"{
+    ""target_id"": ""e19fdb5428ab4c0e84fc73463dba70e7"",
+    ""target_type"": 1,
+    ""msisdn"": ""4664112803"",
+    ""iccid"": ""8901260853151117550"",
+    ""additional_params"": { ""market_zip"": ""95054"" }
+  }"
+1743044414,1743044414,NULL,test,test,test,3,0,0,,/admin/role,"{""id"":31,""name"":""Test permission role-foxtrot"",""permissions"":[""MarketingCampaignsRead"",""BackofficeCampaignsRead"",""ServiceCampaignsRead"",""ServiceCampaignsWrite"",""DocumentReadOnly""]}
+"
+1743045728,1743045728,NULL,test,test,test,4,0,0,,/admin/role,"{""id"":125,""name"":""Test permission role-golf"",""permissions"":[""SegmentsRead"",""MarketingCampaignsRead"",""BackofficeCampaignsWrite"",""DocumentReadOnly""]}
+"
+1743059396,1743059396,NULL,test,test,test,5,0,0,,/admin/role,"{""id"":76,""name"":""Test permission role-hotel"",""permissions"":[""MarketingCampaignsWrite"",""BackofficeCampaignsRead"",""ServiceCampaignsRead"",""ServiceCampaignsWrite""]}
+"
+1743070819,1743070819,NULL,test,test,test,6,0,0,,/admin/role,"{""id"":203,""name"":""Test permission role-india"",""permissions"":[""SegmentsRead"",""MarketingCampaignsRead"",""MarketingCampaignsWrite"",""BackofficeCampaignsWrite""]}
+"
+1743095917,1743095917,NULL,test,test,test,7,0,0,,/admin/role,"{""id"":49,""name"":""Test permission role-juliet"",""permissions"":[""MarketingCampaignsRead"",""BackofficeCampaignsRead"",""ServiceCampaignsRead"",""DocumentReadOnly""]}
+"
+1743104978,1743104978,NULL,test,test,test,8,0,0,,/v3order/deactivatesubscriber,"{""target_id"": ""1bf271f64c4148cd82dbf5a7f15036ef"", ""target_type"": 1},"
+1743137789,1743137789,NULL,test,test,test,9,0,0,,/v3order/deactivatesubscriber,"{""target_id"": ""e66a8711701b4ad2a1a0e0b3fc12a9c2"", ""target_type"": 1},"
+1743169386,1743169386,NULL,test,test,test,10,0,0,,/v3order/deactivatesubscriber,"{""target_id"": ""03f831092c4241239bd72009889195a6"", ""target_type"": 1},"
+1743172387,1743172387,NULL,test,test,test,10,0,0,,v3order/canceldeactivatesubscriber,"{""target_id"": ""03f831092c4241239bd72009889195a6"", ""target_type"": 1},"
+1743284726,1743284726,NULL,test,test,test,9,0,0,,v3order/canceldeactivatesubscriber,"{""target_id"": ""e66a8711701b4ad2a1a0e0b3fc12a9c2"", ""target_type"": 1},"
+1743288036,1743288036,NULL,test,test,test,8,0,0,,v3order/canceldeactivatesubscriber,"{""target_id"": ""1bf271f64c4148cd82dbf5a7f15036ef"", ""target_type"": 1},"
+1743373893,1743373893,NULL,test,test,test,7,0,0,,/v3order/changemsisdn," {
+    ""target_id"": ""22c6b667758d46f8a38235f53c86bffa"",
+    ""target_type"": 1,
+    ""msisdn"": ""4938119321"",
+    ""iccid"": ""8901260853151117490"",
+    ""additional_params"": { ""market_zip"": ""95054"" }
+  }"
+1743466113,1743466113,NULL,test,test,test,6,0,0,,/v3order/swapSim,"{
+  ""sim_type_new"": 20,
+  ""target_id"": ""b3fa6665955f4bdd8413b98a4c307c73_abc"",
+  ""offer_id"": ""f26b7762513a45148992dfae5db9cb13_xyz"",
+  ""target_type"": 1,
+  ""iccid_new"": ""12312321313123123213_123""
+}"
+1743471859,1743471859,NULL,test,test,test,5,0,0,,/v3order/swapSim,"{
+  ""offer_id"": ""f26b7762513a45148992dfae5db9cb13_def"",
+  ""target_type"": 1,
+  ""sim_type_new"": 20,
+  ""target_id"": ""b3fa6665955f4bdd8413b98a4c307c73_ghi"",
+  ""iccid_new"": ""12312321313123123213_456""
+}"
+1743475613,1743475613,NULL,test,test,test,4,0,0,,/admin/role,"{""id"":82,""name"":""Test permission role"",""permissions"":[""MarketingCampaignsRead"",""SegmentsRead"",""BackofficeCampaignsWrite"",""ServiceCampaignsRead"",""MarketingCampaignsWrite"",""DocumentReadOnly"",""BackofficeCampaignsRead"",""ServiceCampaignsWrite""]}"
+1743508905,1743508905,NULL,test,test,test,3,0,0,,/admin/role,"{""id"":83,""name"":""Test Admin role"",""permissions"":[""ServiceCampaignsWrite"",""DocumentReadOnly"",""SegmentsRead"",""MarketingCampaignsWrite"",""BackofficeCampaignsRead"",""ServiceCampaignsRead"",""BackofficeCampaignsWrite"",""MarketingCampaignsRead""]}
+"
+1743514952,1743514952,NULL,test,test,test,2,0,0,,/admin/role,"{""id"":157,""name"":""Test permission role-alpha"",""permissions"":[""SegmentsRead"",""MarketingCampaignsWrite"",""BackofficeCampaignsRead"",""ServiceCampaignsWrite"",""DocumentReadOnly""]}
+"
+1743655534,1743655534,NULL,test,test,test,1,0,0,,/admin/role,"{""id"":92,""name"":""Test permission role-bravo"",""permissions"":[""MarketingCampaignsRead"",""BackofficeCampaignsWrite"",""ServiceCampaignsRead"",""DocumentReadOnly""]}
+"
